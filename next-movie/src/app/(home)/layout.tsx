@@ -4,7 +4,11 @@ interface HomeLayoutProps {
   list: React.ReactNode;
 }
 
-export default function HomeLayout({ children, banner, list }: HomeLayoutProps) {
+export default function HomeLayout({
+  children,
+  banner,
+  list,
+}: HomeLayoutProps) {
   return (
     <div>
       {banner}

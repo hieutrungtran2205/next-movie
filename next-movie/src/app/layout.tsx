@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Box bgcolor={BACKGROUND_COLOR} pt={10}>
+          <Box bgcolor={BACKGROUND_COLOR} pt={8}>
             <Header />
             {children}
           </Box>

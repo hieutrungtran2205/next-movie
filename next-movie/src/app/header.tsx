@@ -1,29 +1,30 @@
-'use client';
+"use client";
 
-import { BACKGROUND_COLOR } from '@/common/utils/const';
-import { AppBar, Toolbar, Typography } from '@mui/material';
-import { Theme } from '@mui/material/styles';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { makeStyles } from '@mui/styles';
-import React from 'react';
+import { BACKGROUND_COLOR } from "@/common/utils/const";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Theme } from "@mui/material/styles";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { makeStyles } from "@mui/styles";
+import React from "react";
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
     backgroundColor: BACKGROUND_COLOR, // Transparent background
-    color: '#fff',
-    transition: theme.transitions?.create(['background-color', 'color'], {
-      duration: theme.transitions.duration.standard
-    })
+    color: "#fff",
+    transition: theme.transitions?.create(["background-color", "color"], {
+      duration: theme.transitions.duration.standard,
+    }),
   },
   appBarScrolled: {
     backgroundColor: BACKGROUND_COLOR, // Change background color on scroll
     opacity: 0.7,
-    color: '#ccc'
+    color: "#ccc",
   },
   toolbar: {
-    display: 'flex',
-    justifyContent: 'space-around'
-  }
+    display: "flex",
+    justifyContent: "center",
+    gap: 32,
+  },
 }));
 
 interface HeaderProps {
@@ -36,7 +37,7 @@ const Header: React.FC<HeaderProps> = () => {
   // Detect scroll to change header style
   const trigger = useScrollTrigger({
     disableHysteresis: true,
-    threshold: 50
+    threshold: 50,
   });
 
   return (

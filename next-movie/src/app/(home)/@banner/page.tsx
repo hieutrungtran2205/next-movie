@@ -15,7 +15,7 @@ function Page() {
   }
 
   return (
-    <Box sx={{ paddingX: { xs: 1, lg: 20 } }}>
+    <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 20 } }}>
       <Carousel interval={5000}>
         {results?.slice(0, 5).map((item: any) => {
           const { id, original_title, title, overview, release_date, backdrop_path, vote_count, vote_average } =
@@ -64,8 +64,7 @@ function Page() {
                     height: '100%',
                     display: 'flex',
                     alignItems: 'end',
-                    paddingX: { xs: 1, lg: 4 },
-                    paddingY: { xs: 1, lg: 4 }
+                    padding: { xs: 1, md: 2, lg: 4 }
                   }}
                 >
                   <Box

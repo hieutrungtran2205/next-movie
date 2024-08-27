@@ -1,5 +1,5 @@
-import { Box, CardMedia, Typography } from "@mui/material";
-import dayjs from "dayjs";
+import { Box, CardMedia, Typography } from '@mui/material';
+import dayjs from 'dayjs';
 
 function MovieCard(props: any) {
   const { data } = props;
@@ -13,24 +13,26 @@ function MovieCard(props: any) {
       />
       <Typography
         gutterBottom
-        variant="h6"
+        variant="body1"
         component="div"
         color="#fff"
-        sx={{
-          display: "-webkit-box",
-          overflow: "hidden",
-          WebkitBoxOrient: "vertical",
-          WebkitLineClamp: 2,
-        }}
+        fontWeight={600}
+        py={1}
+        // sx={{
+        //   display: '-webkit-box',
+        //   overflow: 'hidden',
+        //   WebkitBoxOrient: 'vertical',
+        //   WebkitLineClamp: 3
+        // }}
       >
-        {original_title} - {title}
+        {original_title} - {title} ({dayjs(release_date).format('YYYY')})
       </Typography>
-      {/* <Box sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex" }}>
+      {/* <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex' }}>
           <img width={32} src="/images/imdb.svg" alt="" />
-          <Typography>{dayjs(release_date).format("YYYY")}</Typography>
+          <Typography>{dayjs(release_date).format('YYYY')}</Typography>
         </Box>
-        <Typography>{dayjs(release_date).format("YYYY")}</Typography>
+        <Typography>{dayjs(release_date).format('YYYY')}</Typography>
       </Box> */}
     </Box>
   );

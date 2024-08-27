@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useQueryMovies } from "@/common/api/list";
-import { Box, Typography } from "@mui/material";
-import dayjs from "dayjs";
-import Carousel from "react-material-ui-carousel";
-import Loading from "../@list/loading";
+import { Box, Button, Typography } from '@mui/material';
+import dayjs from 'dayjs';
+import Carousel from 'react-material-ui-carousel';
+import Loading from '../@list/loading';
+import { useQueryNowPlaying } from '@/common/api/movie/list';
 
 function Page() {
-  const { data, isLoading } = useQueryMovies();
+  const { data, isLoading } = useQueryNowPlaying();
   const { results } = data || {};
 
   if (isLoading) {
@@ -15,90 +15,104 @@ function Page() {
   }
 
   return (
-    <Box sx={{ paddingX: 20 }}>
-      <Carousel>
+    <Box sx={{ paddingX: { xs: 1, lg: 20 } }}>
+      <Carousel interval={5000}>
         {results?.slice(0, 5).map((item: any) => {
-          const {
-            original_title,
-            title,
-            overview,
-            release_date,
-            backdrop_path,
-          } = item || {};
+          const { id, original_title, title, overview, release_date, backdrop_path, vote_count, vote_average } =
+            item || {};
           return (
             <Box
+              key={id}
               sx={{
-                position: "relative",
-                height: { lg: 500 },
-                width: "100%",
+                position: 'relative',
+                height: { xs: 350, lg: 500, xl: 600 },
+                width: '100%',
                 borderRadius: 3,
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
                 overlay: 0.5,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                "&::after": {
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                '&::after': {
                   content: '""',
-                  position: "absolute",
+                  position: 'absolute',
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  height: "30%",
+                  height: '40%',
                   borderRadius: 3,
-                  background:
-                    "linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5))",
-                },
+                  background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9))'
+                }
               }}
             >
               <Box
                 sx={{
-                  position: "absolute",
-                  height: "100%",
-                  width: "100%",
+                  position: 'absolute',
+                  height: '100%',
+                  width: '100%',
                   top: 0,
                   left: 0,
-                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                  backgroundColor: 'rgba(0, 0, 0, 0.3)',
                   borderRadius: 3,
+                  zIndex: 1,
+                  color: '#fff'
                 }}
               >
                 <Box
                   sx={{
-                    width: 1 / 2,
-                    height: "100%",
-                    display: "flex",
-                    alignItems: "center",
-                    paddingX: 4,
+                    width: { xs: '100%', lg: '50%', xl: '50%' },
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'end',
+                    paddingX: { xs: 1, lg: 4 },
+                    paddingY: { xs: 1, lg: 4 }
                   }}
                 >
                   <Box
                     sx={{
-                      display: "flex",
-                      flexDirection: "column",
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 1
                     }}
                   >
-                    <Typography
-                      gutterBottom
-                      variant="h4"
-                      component="div"
-                      color="#fff"
-                    >
-                      {original_title} - {title} (
-                      {dayjs(release_date).format("YYYY")})
+                    <Box>
+                      <Typography
+                        gutterBottom
+                        variant="h4"
+                        component="div"
+                        color="#fff"
+                        fontWeight={600}
+                        sx={{ fontSize: { xs: 20, xl: 32 } }}
+                      >
+                        {original_title} - {title} ({dayjs(release_date).format('YYYY')})
+                      </Typography>
+                      <Typography
+                        gutterBottom
+                        variant="body1"
+                        component="div"
+                        color="#fff"
+                        sx={{
+                          display: '-webkit-box',
+                          overflow: 'hidden',
+                          WebkitBoxOrient: 'vertical',
+                          WebkitLineClamp: { xs: 3, lg: 3, xl: 5 },
+                          fontSize: { xs: 14, xl: 16 }
+                        }}
+                      >
+                        {overview}
+                      </Typography>
+                    </Box>
+                    <Typography variant="body1" fontWeight={600}>
+                      Lượt xem: {vote_count} - Đánh giá: {vote_average.toFixed(1)}/10
                     </Typography>
-                    <Typography
-                      gutterBottom
-                      variant="body1"
-                      component="div"
-                      color="#fff"
-                      sx={{
-                        display: "-webkit-box",
-                        overflow: "hidden",
-                        WebkitBoxOrient: "vertical",
-                        WebkitLineClamp: 3,
-                      }}
-                    >
-                      {overview}
-                    </Typography>
+                    <Box sx={{ display: 'flex', gap: 1 }}>
+                      <Button variant="contained" color="success" sx={{ width: 'fit-content' }}>
+                        Xem ngay
+                      </Button>
+                      <Button variant="contained" color="error" sx={{ width: 'fit-content' }}>
+                        Trailer
+                      </Button>
+                    </Box>
                   </Box>
                 </Box>
               </Box>

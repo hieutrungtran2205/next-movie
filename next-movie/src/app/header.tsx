@@ -2,18 +2,7 @@
 
 import { BACKGROUND_COLOR } from '@/common/utils/const';
 import { Close, Menu } from '@mui/icons-material';
-import {
-  AppBar,
-  Box,
-  Button,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Typography
-} from '@mui/material';
+import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { makeStyles } from '@mui/styles';

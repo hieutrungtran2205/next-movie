@@ -1,22 +1,29 @@
 'use client';
 
-import { Box, Button, Typography } from '@mui/material';
+import { useQueryNowPlaying } from '@/common/api/movie/list';
+import { Box, Button, Skeleton, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import Carousel from 'react-material-ui-carousel';
-import Loading from '../@list/loading';
-import { useQueryNowPlaying } from '@/common/api/movie/list';
 
 function Page() {
   const { data, isLoading } = useQueryNowPlaying();
   const { results } = data || {};
 
   if (isLoading) {
-    return <Loading />;
+    return (
+      <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 20 } }}>
+        <Skeleton
+          variant="rounded"
+          sx={{ height: { xs: 200, md: 300, lg: 300, xl: 400 }, backgroundColor: '#344047', borderRadius: 3 }}
+        />
+        <Skeleton variant="rounded" sx={{ width: '30%', height: 16, backgroundColor: '#344047', mt: 1, mx: 'auto' }} />
+      </Box>
+    );
   }
 
   return (
     <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 20 } }}>
-      <Carousel interval={5000}>
+      <Carousel interval={5000} activeIndicatorIconButtonProps={{ style: { color: '#ffde00' } }}>
         {results?.slice(0, 5).map((item: any) => {
           const { id, original_title, title, overview, release_date, backdrop_path, vote_count, vote_average } =
             item || {};

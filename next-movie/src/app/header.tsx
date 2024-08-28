@@ -7,6 +7,7 @@ import { Theme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -54,19 +55,27 @@ const Header: React.FC<HeaderProps> = () => {
       className={trigger ? classes.appBarScrolled : classes.appBar}
       elevation={0} // Removes shadow
     >
-      <Toolbar className={classes.toolbar} sx={{ px: { xs: 0, sm: 0, md: 5, lg: 20, xl: 20 } }}>
-        <Image width={100} height={100} src="/images/logo.png" alt="logo" />
+      <Toolbar className={classes.toolbar} sx={{ px: { xs: 0, sm: 0, md: 5, lg: 20, xl: 30 } }}>
+        <Link href="/">
+          <Image width={100} height={100} src="/images/logo.png" alt="logo" />
+        </Link>
         <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' }, gap: 4 }}>
-          <Typography variant="h6">Phim mới</Typography>
-          <Typography variant="h6">Phim lẻ</Typography>
-          <Typography variant="h6">Phim chẵn</Typography>
+          <Link href="/phim-moi">
+            <Typography variant="h6">Phim mới</Typography>
+          </Link>
+          <Link href="/phim-le">
+            <Typography variant="h6">Phim lẻ</Typography>
+          </Link>
+          <Link href="/tv-series">
+            <Typography variant="h6">Phim chẵn</Typography>
+          </Link>
         </Box>
         {!open && (
           <Button
             sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' } }}
             onClick={toggleDrawer(true)}
           >
-            <Menu sx={{ color: '#ffde59' }} />
+            <Menu sx={{ color: '#fcde56' }} />
           </Button>
         )}
         <Drawer
@@ -76,7 +85,7 @@ const Header: React.FC<HeaderProps> = () => {
           sx={{
             '& .MuiDrawer-paper': {
               width: '50%',
-              color: '#ffde59',
+              color: '#fcde56',
               boxSizing: 'border-box',
               backgroundColor: BACKGROUND_COLOR,
               opacity: 0.8
@@ -85,19 +94,25 @@ const Header: React.FC<HeaderProps> = () => {
         >
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', py: 1 }}>
             <Button onClick={toggleDrawer(false)}>
-              <Close sx={{ color: '#ffde59' }} />
+              <Close sx={{ color: '#fcde56' }} />
             </Button>
           </Box>
           <List sx={{ pt: 0 }}>
-            <ListItemButton>
-              <ListItemText primary="Phim mới" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Phim lẻ" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Phim chẵn" />
-            </ListItemButton>
+            <Link href="/phim-moi">
+              <ListItemButton onClick={toggleDrawer(false)}>
+                <ListItemText primary="Phim mới" />
+              </ListItemButton>
+            </Link>
+            <Link href="/phim-le">
+              <ListItemButton onClick={toggleDrawer(false)}>
+                <ListItemText primary="Phim lẻ" />
+              </ListItemButton>
+            </Link>{' '}
+            <Link href="/tv-series">
+              <ListItemButton onClick={toggleDrawer(false)}>
+                <ListItemText primary="Phim chẵn" />
+              </ListItemButton>
+            </Link>
           </List>
         </Drawer>
       </Toolbar>

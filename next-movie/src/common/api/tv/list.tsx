@@ -6,9 +6,9 @@ interface paramsProps {
   language?: string;
 }
 
-const getMovies = async (params?: paramsProps) => {
+const getTvSeries = async (params?: paramsProps) => {
   try {
-    const res = await axios.get('https://api.themoviedb.org/3/discover/movie', {
+    const res = await axios.get('https://api.themoviedb.org/3/discover/tv', {
       params: {
         ...params,
         language: params?.language || 'vi',
@@ -21,7 +21,7 @@ const getMovies = async (params?: paramsProps) => {
   }
 };
 
-export const useQueryMovies = (params?: paramsProps) => {
-  const { data, error, isLoading } = useQuery({ queryKey: ['movies'], queryFn: () => getMovies(params) });
+export const useQueryTvSeries = (params?: paramsProps) => {
+  const { data, error, isLoading } = useQuery({ queryKey: ['tv'], queryFn: () => getTvSeries(params) });
   return { data, error, isLoading };
 };

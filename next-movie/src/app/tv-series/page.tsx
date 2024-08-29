@@ -6,7 +6,7 @@ import MyPagination from '@/common/components/MyPagination';
 import { Box, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 
-function HotMovies() {
+function TvSeries() {
   const { data, isLoading } = useQueryTvSeries();
   const { results, total_pages } = data || {};
 
@@ -29,4 +29,4 @@ function HotMovies() {
   );
 }
 
-export default memo(HotMovies);
+export default memo(TvSeries);

@@ -12,9 +12,7 @@ import Loading from './loading';
 function HomePage() {
   const { data, isLoading } = useQueryTvSeries();
   const { results } = data || {};
-
   const chunkSize = useSize();
-
   const chunkedItems = [];
   for (let i = 0; i < results?.length; i += chunkSize) {
     chunkedItems.push(results?.slice(i, i + chunkSize));
@@ -25,9 +23,14 @@ function HomePage() {
   }
 
   return (
-    <Box sx={{ px: { xl: 20 }, py: 2 }}>
+    <Box sx={{ px: { lg: 10, xl: 20 }, py: 2 }}>
       <Box
-        sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', px: { xs: 1, sm: 1, xl: 10 } }}
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          px: { xs: 1, sm: 1, md: 5, lg: 10, xl: 10 }
+        }}
       >
         <Typography variant="h6" color="#fcde56" fontWeight={600}>
           Phim chẵn
@@ -38,13 +41,13 @@ function HomePage() {
           </Typography>
         </Link>
       </Box>
-      <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible sx={{ px: { xl: 10 } }}>
+      <Carousel autoPlay={false} indicators={false} navButtonsAlwaysVisible sx={{ px: { lg: 10, xl: 10 } }}>
         {chunkedItems.map((chunk, index) => (
           <Grid
             container
             key={index}
-            spacing={{ xs: 1, sm: 1, md: 5, lg: 5, xl: 5 }}
-            px={{ xs: 1, sm: 1, md: 5, lg: 20, xl: 0 }}
+            spacing={{ xs: 1, sm: 1, md: 8, lg: 5, xl: 5 }}
+            px={{ xs: 1, sm: 1, md: 5, lg: 0, xl: 0 }}
             py={1}
           >
             {chunk.map((item: any) => (

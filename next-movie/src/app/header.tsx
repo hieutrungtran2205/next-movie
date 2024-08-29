@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = () => {
         <Link href="/">
           <Image width={100} height={100} src="/images/logo.png" alt="logo" />
         </Link>
-        <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' }, gap: 4 }}>
+        <Box sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'flex', xl: 'flex' }, gap: 4, color: '#fcde56' }}>
           <Link href="/phim-moi">
             <Typography variant="h6">Phim mới</Typography>
           </Link>

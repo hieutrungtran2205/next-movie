@@ -36,7 +36,6 @@ function Page() {
                 width: '100%',
                 borderRadius: 3,
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
-                overlay: 0.5,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

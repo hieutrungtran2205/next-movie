@@ -11,7 +11,7 @@ const getVideos = async (params: paramsProps) => {
   try {
     const res = await axios.get(`https://api.themoviedb.org/3/movie/${params.id}/videos`, {
       params: {
-        language: params?.language || 'vi',
+        // language: params?.language || 'vi',
         api_key: API_KEY
       }
     });

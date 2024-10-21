@@ -2,6 +2,7 @@
 
 import { useQueryMovieVideos } from '@/common/api/movie/videos';
 import { Grid } from '@mui/material';
+import { isEmpty } from 'lodash';
 import Image from 'next/image';
 import Carousel from 'react-material-ui-carousel';
 
@@ -15,12 +16,14 @@ function Videos({ id }: { id: string }) {
     chunkedItems.push(results?.slice(i, i + chunkSize));
   }
 
+  if (isEmpty(results)) return null;
+
   return (
     <Carousel sx={{ minHeight: 100, px: 10 }} autoPlay={false} indicators={false} navButtonsAlwaysVisible>
       {chunkedItems.map((chunk, index) => (
-        <Grid key={index} container>
+        <Grid key={index} container justifyContent="center" rowGap={{ xs: 1, xl: 0 }}>
           {chunk.map((item: any) => (
-            <Grid md={3} lg={3} xl={3} key={item.id}>
+            <Grid xs={6} md={3} lg={3} xl={3} key={item.id}>
               <Image
                 width={150}
                 height={100}

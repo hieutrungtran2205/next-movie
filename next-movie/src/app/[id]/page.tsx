@@ -2,9 +2,7 @@
 
 import { useQueryDetailMovie } from '@/common/api/movie/detail';
 import { Box } from '@mui/material';
-import Cast from './_components/cast';
 import Info from './_components/info';
-import Videos from './_components/videos';
 
 function DetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
@@ -12,12 +10,12 @@ function DetailPage({ params }: { params: { id: string } }) {
   const { backdrop_path } = data || {};
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 0, xl: 4 } }}>
       <Box
         sx={{
-          mt: -10,
+          mt: { xs: 0, xl: -10 },
           position: 'relative',
-          height: { xs: 300, sm: 300, md: 500, lg: '100vh', xl: '100vh' },
+          height: { xs: '25vh', sm: '30vh', md: '30vh', lg: '100vh', xl: '100vh' },
           backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -35,6 +33,7 @@ function DetailPage({ params }: { params: { id: string } }) {
       >
         <Box
           sx={{
+            display: { xs: 'none', xl: 'block' },
             position: 'absolute',
             height: '100%',
             width: '100%',
@@ -44,31 +43,11 @@ function DetailPage({ params }: { params: { id: string } }) {
             zIndex: 1
           }}
         >
-          <Box
-            sx={{
-              height: '100%',
-              display: { xs: 'none', lg: 'flex' },
-              alignItems: 'end',
-              gap: 2,
-              padding: { xs: 1, md: 2, lg: 4 }
-            }}
-          >
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 1
-              }}
-            >
-              <Info data={data} />
-            </Box>
-            <Box sx={{ flex: 1 }}>
-              <Videos id={id} />
-              <Cast id={id} />
-            </Box>
-          </Box>
+          <Info id={id} />
         </Box>
+      </Box>
+      <Box display={{ xs: 'block', xl: 'none' }}>
+        <Info id={id} />
       </Box>
     </Box>
   );

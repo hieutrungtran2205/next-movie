@@ -1,9 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useSearchParams } from 'next/navigation';
 import { API_KEY } from '../../utils/const';
 
 interface paramsProps {
   language?: string;
+  page?: number;
 }
 
 const getMovies = async (params?: paramsProps) => {
@@ -22,6 +24,11 @@ const getMovies = async (params?: paramsProps) => {
 };
 
 export const useQueryMovies = (params?: paramsProps) => {
-  const { data, error, isLoading } = useQuery({ queryKey: ['movies'], queryFn: () => getMovies(params) });
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const { data, error, isLoading } = useQuery({
+    queryKey: ['movies', page, params],
+    queryFn: () => getMovies({ page, ...params })
+  });
   return { data, error, isLoading };
 };

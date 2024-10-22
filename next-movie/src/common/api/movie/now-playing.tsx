@@ -25,10 +25,10 @@ const getNowPlaying = async (params?: paramsProps) => {
 
 export const useQueryNowPlaying = (params?: paramsProps) => {
   const searchParams = useSearchParams();
-  const currentPage = Number(searchParams.get('page')) || 1;
+  const page = Number(searchParams.get('page')) || 1;
   const { data, error, isLoading } = useQuery({
-    queryKey: ['now_playing', currentPage],
-    queryFn: () => getNowPlaying({ ...params, page: currentPage })
+    queryKey: ['now_playing', page, params],
+    queryFn: () => getNowPlaying({ page, ...params })
   });
   return { data, error, isLoading };
 };

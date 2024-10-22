@@ -4,12 +4,14 @@ interface HomeLayoutProps {
   hot: React.ReactNode;
   movies: React.ReactNode;
   tv: React.ReactNode;
+  filter: React.ReactNode;
 }
 
-export default function HomeLayout({ children, banner, hot, movies, tv }: HomeLayoutProps) {
+export default function HomeLayout({ children, banner, hot, movies, tv, filter }: HomeLayoutProps) {
   return (
     <div>
       {banner}
+      {filter}
       {hot}
       {movies}
       {tv}

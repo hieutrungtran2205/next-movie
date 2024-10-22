@@ -1,14 +1,16 @@
 'use client';
 
+import Filter from '@/common/components/filter/Filter';
 import { BACKGROUND_COLOR } from '@/common/utils/const';
-import { Close, Menu } from '@mui/icons-material';
+import { Close, Menu, Search } from '@mui/icons-material';
 import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import { makeStyles } from '@mui/styles';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) => ({
   appBar: {
@@ -35,6 +37,10 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const queryString = searchParams.toString();
+
   const classes = useStyles();
 
   // Detect scroll to change header style
@@ -48,6 +54,17 @@ const Header: React.FC<HeaderProps> = () => {
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+
+  const [openSearch, setOpenSearch] = useState(false);
+
+  const toggleDrawerSearch = (newOpen: boolean) => () => {
+    setOpenSearch(newOpen);
+  };
+
+  useEffect(() => {
+    setOpen(false);
+    setOpenSearch(false);
+  }, [pathname, queryString]);
 
   return (
     <AppBar
@@ -70,13 +87,21 @@ const Header: React.FC<HeaderProps> = () => {
             <Typography variant="h6">Phim chẵn</Typography>
           </Link>
         </Box>
-        {!open && (
-          <Button
-            sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' } }}
-            onClick={toggleDrawer(true)}
-          >
-            <Menu sx={{ color: '#fcde56' }} />
-          </Button>
+
+        {!(open || openSearch) && (
+          <Box display="flex" paddingX={2} gap={2}>
+            <Search
+              sx={{
+                display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' },
+                color: '#fcde56'
+              }}
+              onClick={toggleDrawerSearch(true)}
+            />
+            <Menu
+              sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }, color: '#fcde56' }}
+              onClick={toggleDrawer(true)}
+            />
+          </Box>
         )}
         <Drawer
           anchor="right"
@@ -92,7 +117,7 @@ const Header: React.FC<HeaderProps> = () => {
             }
           }}
         >
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end', py: 1 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', pt: 1 }}>
             <Button onClick={toggleDrawer(false)}>
               <Close sx={{ color: '#fcde56' }} />
             </Button>
@@ -114,6 +139,27 @@ const Header: React.FC<HeaderProps> = () => {
               </ListItemButton>
             </Link>
           </List>
+        </Drawer>
+        <Drawer
+          anchor="right"
+          open={openSearch}
+          onClose={toggleDrawerSearch(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              width: '100%',
+              color: '#fcde56',
+              boxSizing: 'border-box',
+              backgroundColor: BACKGROUND_COLOR,
+              opacity: 0.8
+            }
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'flex-end', pt: 1 }}>
+            <Button onClick={toggleDrawerSearch(false)}>
+              <Close sx={{ color: '#fcde56' }} />
+            </Button>
+          </Box>
+          <Filter />
         </Drawer>
       </Toolbar>
     </AppBar>

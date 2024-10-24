@@ -35,7 +35,7 @@ function HomePage() {
         <Typography variant="h6" color="#fcde56" fontWeight={600}>
           Phim lẻ
         </Typography>
-        <Link href="/phim-le">
+        <Link href="/movie">
           <Typography variant="body2" color="#fcde56" sx={{ textDecoration: 'underline' }}>
             Xem thêm
           </Typography>

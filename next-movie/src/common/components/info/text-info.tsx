@@ -5,7 +5,7 @@ import { Box, Rating, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 
 function TextInfo({ id }: { id: string }) {
-  const { data } = useQueryDetailMovie({ id });
+  const { data } = useQueryDetailMovie(id);
   const {
     original_title,
     title,

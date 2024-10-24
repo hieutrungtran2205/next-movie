@@ -35,7 +35,7 @@ function HomePage() {
         <Typography variant="h6" color="#fcde56" fontWeight={600}>
           Phim chẵn
         </Typography>
-        <Link href="/tv-series">
+        <Link href="/tv">
           <Typography variant="body2" color="#fcde56" sx={{ textDecoration: 'underline' }}>
             Xem thêm
           </Typography>
@@ -52,7 +52,7 @@ function HomePage() {
           >
             {chunk.map((item: any) => (
               <Grid item xs={6} sm={6} md={3} lg={2.4} xl={2} key={item.id}>
-                <MovieCard data={item} />
+                <MovieCard data={item} type="tv" />
               </Grid>
             ))}
           </Grid>

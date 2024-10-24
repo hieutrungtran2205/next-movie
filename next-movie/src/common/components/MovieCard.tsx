@@ -3,11 +3,11 @@ import dayjs from 'dayjs';
 import Link from 'next/link';
 
 function MovieCard(props: any) {
-  const { data } = props;
+  const { data, type } = props;
   const { id, original_title, original_name, title, name, release_date, poster_path } = data || {};
   return (
     <>
-      <Link href={`/${id}`}>
+      <Link href={`/${type || 'movie'}/${id}`}>
         <Box
           component="img"
           src={poster_path ? `https://image.tmdb.org/t/p/w400${poster_path}` : '/images/no-img.png'}

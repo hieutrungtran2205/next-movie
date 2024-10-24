@@ -1,12 +1,12 @@
 'use client';
 
-import { useQueryDetailMovie } from '@/common/api/movie/detail';
+import { useQueryDetailTvSeries } from '@/common/api/tv/detail';
+import Info from '@/common/components/info/info';
 import { Box } from '@mui/material';
-import Info from './_components/info';
 
 function DetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const { data } = useQueryDetailMovie({ id });
+  const { data } = useQueryDetailTvSeries(id);
   const { backdrop_path } = data || {};
 
   return (

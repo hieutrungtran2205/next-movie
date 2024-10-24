@@ -8,7 +8,7 @@ import Carousel from 'react-material-ui-carousel';
 function Page() {
   const { data, isLoading } = useQueryNowPlaying();
   const { results } = data || {};
-  console.log(results);
+
   if (isLoading) {
     return (
       <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 30 } }}>

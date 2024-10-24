@@ -9,7 +9,7 @@ interface paramsProps {
 
 const getDetail = async (id: string, params?: paramsProps) => {
   try {
-    const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}`, {
+    const res = await axios.get(`https://api.themoviedb.org/3/tv/${id}`, {
       params: {
         append_to_response: params?.append_to_response || 'videos,images',
         language: params?.language || 'vi',
@@ -22,7 +22,7 @@ const getDetail = async (id: string, params?: paramsProps) => {
   }
 };
 
-export const useQueryDetailMovie = (id: string, params?: paramsProps) => {
+export const useQueryDetailTvSeries = (id: string, params?: paramsProps) => {
   const { data, error, isLoading } = useQuery({
     queryKey: ['movie_detail', id, params],
     queryFn: () => getDetail(id, params),

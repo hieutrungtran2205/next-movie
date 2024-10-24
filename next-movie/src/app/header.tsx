@@ -80,10 +80,10 @@ const Header: React.FC<HeaderProps> = () => {
           <Link href="/phim-moi">
             <Typography variant="h6">Phim mới</Typography>
           </Link>
-          <Link href="/phim-le">
+          <Link href="/movie">
             <Typography variant="h6">Phim lẻ</Typography>
           </Link>
-          <Link href="/tv-series">
+          <Link href="/tv">
             <Typography variant="h6">Phim chẵn</Typography>
           </Link>
         </Box>
@@ -128,12 +128,12 @@ const Header: React.FC<HeaderProps> = () => {
                 <ListItemText primary="Phim mới" />
               </ListItemButton>
             </Link>
-            <Link href="/phim-le">
+            <Link href="/movie">
               <ListItemButton onClick={toggleDrawer(false)}>
                 <ListItemText primary="Phim lẻ" />
               </ListItemButton>
             </Link>{' '}
-            <Link href="/tv-series">
+            <Link href="/tv">
               <ListItemButton onClick={toggleDrawer(false)}>
                 <ListItemText primary="Phim chẵn" />
               </ListItemButton>

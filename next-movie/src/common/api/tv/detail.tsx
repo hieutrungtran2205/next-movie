@@ -24,7 +24,7 @@ const getDetail = async (id: string, params?: paramsProps) => {
 
 export const useQueryDetailTvSeries = (id: string, params?: paramsProps) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['movie_detail', id, params],
+    queryKey: ['tv_detail', id, params],
     queryFn: () => getDetail(id, params),
     enabled: !!id
   });

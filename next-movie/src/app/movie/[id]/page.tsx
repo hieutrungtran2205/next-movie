@@ -2,6 +2,7 @@
 
 import { useQueryDetailMovie } from '@/common/api/movie/detail';
 import Info from '@/common/components/info/info';
+import SimilarMovies from '@/common/components/similar/SimilarMovies';
 import { Box } from '@mui/material';
 
 function DetailPage({ params }: { params: { id: string } }) {
@@ -49,6 +50,7 @@ function DetailPage({ params }: { params: { id: string } }) {
       <Box display={{ xs: 'block', xl: 'none' }}>
         <Info id={id} />
       </Box>
+      <SimilarMovies id={id} />
     </Box>
   );
 }

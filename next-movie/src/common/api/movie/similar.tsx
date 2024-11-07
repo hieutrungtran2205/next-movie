@@ -7,7 +7,7 @@ interface paramsProps {
   page?: number;
 }
 
-const getSimilar = async (id: string, params: paramsProps) => {
+const getSimilar = async (id: string, params?: paramsProps) => {
   try {
     const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar`, {
       params: {
@@ -22,9 +22,9 @@ const getSimilar = async (id: string, params: paramsProps) => {
   }
 };
 
-export const useQueryMoviesSimilar = (id: string, params: paramsProps) => {
+export const useQuerySimilarMovies = (id: string, params?: paramsProps) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['similar_movies', params],
+    queryKey: ['similar_movies', id, params],
     queryFn: () => getSimilar(id, params),
     enabled: !!id
   });

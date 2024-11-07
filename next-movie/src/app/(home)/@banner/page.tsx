@@ -3,11 +3,17 @@
 import { useQueryNowPlaying } from '@/common/api/movie/now-playing';
 import { Box, Button, Skeleton, Typography } from '@mui/material';
 import dayjs from 'dayjs';
+import { useRouter } from 'next/navigation';
 import Carousel from 'react-material-ui-carousel';
 
 function Page() {
   const { data, isLoading } = useQueryNowPlaying();
   const { results } = data || {};
+  const router = useRouter();
+
+  const onWatchNow = (id: string) => {
+    router.push(`/movie/${id}`);
+  };
 
   if (isLoading) {
     return (
@@ -111,7 +117,12 @@ function Page() {
                       Lượt xem: {vote_count} - Đánh giá: {vote_average.toFixed(1)}/10
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 1 }}>
-                      <Button variant="contained" color="success" sx={{ width: 'fit-content' }}>
+                      <Button
+                        variant="contained"
+                        color="success"
+                        sx={{ width: 'fit-content' }}
+                        onClick={() => onWatchNow(id)}
+                      >
                         Xem ngay
                       </Button>
                       <Button variant="contained" color="error" sx={{ width: 'fit-content' }}>

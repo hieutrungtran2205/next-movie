@@ -1,11 +1,10 @@
-import { ICON_COLOR } from '@/common/utils/const';
+import { ICON_COLOR } from '@/utils/const';
 import { FormControl, TextField } from '@mui/material';
 
 function Keywords({ onChange }: any) {
   return (
     <FormControl sx={{ width: '100%' }}>
       <TextField
-        autoFocus
         name="keywords"
         id="keywords"
         label="Từ khóa"

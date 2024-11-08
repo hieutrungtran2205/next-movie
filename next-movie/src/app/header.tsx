@@ -1,7 +1,8 @@
 'use client';
 
-import Filter from '@/common/components/filter/Filter';
-import { BACKGROUND_COLOR } from '@/common/utils/const';
+import Filter from '@/components/filter/Filter';
+import GenreList from '@/components/genres/GenreList';
+import { BACKGROUND_COLOR } from '@/utils/const';
 import { Close, Menu, Search } from '@mui/icons-material';
 import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
@@ -49,21 +50,26 @@ const Header: React.FC<HeaderProps> = () => {
     threshold: 50
   });
 
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
+  const [openGenres, setOpenGenres] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
+    setOpenMenu(newOpen);
   };
-
-  const [openSearch, setOpenSearch] = useState(false);
 
   const toggleDrawerSearch = (newOpen: boolean) => () => {
     setOpenSearch(newOpen);
   };
 
+  const toggleDrawerGenres = (newOpen: boolean) => () => {
+    setOpenGenres(newOpen);
+  };
+
   useEffect(() => {
-    setOpen(false);
+    setOpenMenu(false);
     setOpenSearch(false);
+    setOpenGenres(false);
   }, [pathname, queryString]);
 
   return (
@@ -88,7 +94,7 @@ const Header: React.FC<HeaderProps> = () => {
           </Link>
         </Box>
 
-        {!(open || openSearch) && (
+        {!(openMenu || openSearch) && (
           <Box display="flex" paddingX={2} gap={2}>
             <Search
               sx={{
@@ -105,7 +111,7 @@ const Header: React.FC<HeaderProps> = () => {
         )}
         <Drawer
           anchor="right"
-          open={open}
+          open={openMenu}
           onClose={toggleDrawer(false)}
           sx={{
             '& .MuiDrawer-paper': {
@@ -138,6 +144,11 @@ const Header: React.FC<HeaderProps> = () => {
                 <ListItemText primary="Phim chẵn" />
               </ListItemButton>
             </Link>
+            {/* <Link href="/tv"> */}
+            <ListItemButton onClick={toggleDrawerGenres(true)}>
+              <ListItemText primary="Thể loại" />
+            </ListItemButton>
+            {/* </Link> */}
           </List>
         </Drawer>
         <Drawer
@@ -160,6 +171,31 @@ const Header: React.FC<HeaderProps> = () => {
             </Button>
           </Box>
           <Filter />
+        </Drawer>
+
+        <Drawer
+          anchor="left"
+          open={openGenres}
+          onClose={toggleDrawerGenres(false)}
+          sx={{
+            '& .MuiDrawer-paper': {
+              width: '100%',
+              color: '#fcde56',
+              boxSizing: 'border-box',
+              backgroundColor: BACKGROUND_COLOR,
+              opacity: 0.8
+            }
+          }}
+        >
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', pt: 1 }}>
+            <Typography variant="h6" ml={2}>
+              Thể loại
+            </Typography>
+            <Button onClick={toggleDrawerGenres(false)}>
+              <Close sx={{ color: '#fcde56' }} />
+            </Button>
+          </Box>
+          <GenreList />
         </Drawer>
       </Toolbar>
     </AppBar>

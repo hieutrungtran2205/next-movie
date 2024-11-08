@@ -1,4 +1,4 @@
-import { useQueryMovieCredits } from '@/common/api/movie/credits';
+import { useQueryMovieCredits } from '@/api/movie/credits';
 import { Avatar, Box, Grid, Typography } from '@mui/material';
 import { isEmpty } from 'lodash';
 import Carousel from 'react-material-ui-carousel';

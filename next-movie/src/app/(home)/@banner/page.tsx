@@ -1,6 +1,6 @@
 'use client';
 
-import { useQueryNowPlaying } from '@/common/api/movie/now-playing';
+import { useQueryNowPlaying } from '@/api/movie/now-playing';
 import { Box, Button, Skeleton, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import { useRouter } from 'next/navigation';

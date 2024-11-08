@@ -1,13 +1,13 @@
 'use client';
 
-import MovieCard from '@/common/components/MovieCard';
-import useSize from '@/common/hooks/useSize';
+import MovieCard from '@/components/MovieCard';
+import useSize from '@/hooks/useSize';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import { memo } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Loading from './loading';
-import { useQueryNowPlaying } from '@/common/api/movie/now-playing';
+import { useQueryNowPlaying } from '@/api/movie/now-playing';
 
 function HomePage() {
   const { data, isLoading } = useQueryNowPlaying();

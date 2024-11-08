@@ -1,8 +1,8 @@
 'use client';
 
-import { useQueryNowPlaying } from '@/common/api/movie/now-playing';
-import MovieCard from '@/common/components/MovieCard';
-import MyPagination from '@/common/components/MyPagination';
+import { useQueryNowPlaying } from '@/api/movie/now-playing';
+import MovieCard from '@/components/MovieCard';
+import MyPagination from '@/components/MyPagination';
 import { Box, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 

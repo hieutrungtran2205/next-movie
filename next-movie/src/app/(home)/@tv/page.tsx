@@ -1,8 +1,8 @@
 'use client';
 
-import { useQueryTvSeries } from '@/common/api/tv/list';
-import MovieCard from '@/common/components/MovieCard';
-import useSize from '@/common/hooks/useSize';
+import { useQueryTvSeries } from '@/api/tv/list';
+import MovieCard from '@/components/MovieCard';
+import useSize from '@/hooks/useSize';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import { memo } from 'react';

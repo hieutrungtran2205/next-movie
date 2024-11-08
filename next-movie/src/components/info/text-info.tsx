@@ -1,5 +1,5 @@
-import { useQueryDetailMovie } from '@/common/api/movie/detail';
-import { convertMinutesToHours } from '@/common/utils/helper';
+import { useQueryDetailMovie } from '@/api/movie/detail';
+import { convertMinutesToHours } from '@/utils/helper';
 import { Star, VisibilityOutlined } from '@mui/icons-material';
 import { Box, Rating, Typography } from '@mui/material';
 import dayjs from 'dayjs';

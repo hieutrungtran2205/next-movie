@@ -1,6 +1,6 @@
 'use client';
 
-import { useQueryMovieVideos } from '@/common/api/movie/videos';
+import { useQueryMovieVideos } from '@/api/movie/videos';
 import { Grid } from '@mui/material';
 import { isEmpty } from 'lodash';
 import Image from 'next/image';

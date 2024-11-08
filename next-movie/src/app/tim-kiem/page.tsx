@@ -1,8 +1,8 @@
 'use client';
 
-import { useQuerySearchList } from '@/common/api/search/list';
-import MovieCard from '@/common/components/MovieCard';
-import MyPagination from '@/common/components/MyPagination';
+import { useQuerySearchList } from '@/api/search/list';
+import MovieCard from '@/components/MovieCard';
+import MyPagination from '@/components/MyPagination';
 import { Box, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 

@@ -1,8 +1,8 @@
 'use client';
 
-import { useQueryDetailMovie } from '@/common/api/movie/detail';
-import Info from '@/common/components/info/info';
-import SimilarMovies from '@/common/components/similar/SimilarMovies';
+import { useQueryDetailMovie } from '@/api/movie/detail';
+import Info from '@/components/info/info';
+import SimilarMovies from '@/components/similar/SimilarMovies';
 import { Box } from '@mui/material';
 
 function DetailPage({ params }: { params: { id: string } }) {

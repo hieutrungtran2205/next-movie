@@ -1,7 +1,7 @@
 'use client';
 
-import { useQueryDetailTvSeries } from '@/common/api/tv/detail';
-import Info from '@/common/components/info/info';
+import { useQueryDetailTvSeries } from '@/api/tv/detail';
+import Info from '@/components/info/info';
 import { Box } from '@mui/material';
 
 function DetailPage({ params }: { params: { id: string } }) {

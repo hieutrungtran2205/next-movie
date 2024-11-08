@@ -1,8 +1,8 @@
 'use client';
 
-import { useQuerySimilarMovies } from '@/common/api/movie/similar';
-import MovieCard from '@/common/components/MovieCard';
-import useSize from '@/common/hooks/useSize';
+import { useQuerySimilarMovies } from '@/api/movie/similar';
+import MovieCard from '@/components/MovieCard';
+import useSize from '@/hooks/useSize';
 import { Box, Grid, Typography } from '@mui/material';
 import { isEmpty } from 'lodash';
 import { memo } from 'react';

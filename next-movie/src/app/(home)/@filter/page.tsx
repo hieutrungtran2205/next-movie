@@ -1,4 +1,4 @@
-import Filter from '@/common/components/filter/Filter';
+import Filter from '@/components/filter/Filter';
 import { Box } from '@mui/material';
 
 function FilterSlot() {

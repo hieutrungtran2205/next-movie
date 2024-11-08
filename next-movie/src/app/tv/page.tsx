@@ -1,8 +1,8 @@
 'use client';
 
-import { useQueryTvSeries } from '@/common/api/tv/list';
-import MovieCard from '@/common/components/MovieCard';
-import MyPagination from '@/common/components/MyPagination';
+import { useQueryTvSeries } from '@/api/tv/list';
+import MovieCard from '@/components/MovieCard';
+import MyPagination from '@/components/MyPagination';
 import { Box, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 

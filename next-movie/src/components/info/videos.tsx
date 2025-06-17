@@ -29,8 +29,8 @@ function Videos({ id }: { id: string }) {
                 height={100}
                 className="trailer-img"
                 alt={item.key}
-                // src={`https://img.youtube.com/vi/${item.key}/mqdefault.jpg`}
-                src={`/images/logo.png`}
+                src={`https://img.youtube.com/vi/${item.key}/mqdefault.jpg`}
+                // src="/images/logo.png"
               />
             </Grid>
           ))}

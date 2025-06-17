@@ -28,7 +28,7 @@ function TextInfo({ id }: { id: string }) {
   return (
     <>
       <Box>
-        <Typography variant="h4" component="div" color="#fff" fontWeight={600} sx={{ fontSize: { xs: 28, xl: 48 } }}>
+        <Typography variant="h4" component="div" color="#fff" fontWeight={600} sx={{ fontSize: { xs: 28, xl: 36 } }}>
           {original_title} - {title} ({dayjs(release_date).format('YYYY')})
         </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, xl: 1.5 }, mb: 1 }}>
@@ -63,7 +63,7 @@ function TextInfo({ id }: { id: string }) {
             </Typography>
           </Box>
         </Box>
-        <Typography gutterBottom variant="body1" component="div" color="#fff">
+        <Typography gutterBottom variant="body1" component="div" color="#fff" textAlign="justify">
           {overview}
         </Typography>
       </Box>

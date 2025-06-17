@@ -2,7 +2,7 @@
 
 import Filter from '@/components/filter/Filter';
 import GenreList from '@/components/genres/GenreList';
-import { BACKGROUND_COLOR } from '@/utils/const';
+import { BACKGROUND_COLOR, CONTENT_MAX_WIDTH, LAYOUT_MAX_WIDTH } from '@/utils/const';
 import { Close, Menu, Search } from '@mui/icons-material';
 import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
@@ -78,7 +78,10 @@ const Header: React.FC<HeaderProps> = () => {
       className={trigger ? classes.appBarScrolled : classes.appBar}
       elevation={0} // Removes shadow
     >
-      <Toolbar className={classes.toolbar} sx={{ px: { xs: 0, sm: 0, md: 5, lg: 20, xl: 30 } }}>
+      <Toolbar
+        className={classes.toolbar}
+        style={{ width: CONTENT_MAX_WIDTH, maxWidth: LAYOUT_MAX_WIDTH, margin: '0 auto' }}
+      >
         <Link href="/">
           <Image width={100} height={100} src="/images/logo.png" alt="logo" />
         </Link>
@@ -94,7 +97,7 @@ const Header: React.FC<HeaderProps> = () => {
           </Link>
         </Box>
 
-        {!(openMenu || openSearch) && (
+        {/* {!(openMenu || openSearch) && (
           <Box display="flex" paddingX={2} gap={2}>
             <Search
               sx={{
@@ -108,7 +111,7 @@ const Header: React.FC<HeaderProps> = () => {
               onClick={toggleDrawer(true)}
             />
           </Box>
-        )}
+        )} */}
         <Drawer
           anchor="right"
           open={openMenu}

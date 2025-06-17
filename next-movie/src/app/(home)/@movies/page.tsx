@@ -23,7 +23,7 @@ function HomePage() {
   }
 
   return (
-    <Box sx={{ px: { lg: 10, xl: 20 }, py: 2 }}>
+    <Box>
       <Box
         sx={{
           display: 'flex',
@@ -51,7 +51,7 @@ function HomePage() {
             py={1}
           >
             {chunk.map((item: any) => (
-              <Grid item xs={6} sm={6} md={3} lg={2.4} xl={2} key={item.id}>
+              <Grid item xs={6} sm={6} md={3} lg={2.4} xl={2.4} key={item.id}>
                 <MovieCard data={item} />
               </Grid>
             ))}

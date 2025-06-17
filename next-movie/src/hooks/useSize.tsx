@@ -1,7 +1,7 @@
 import { useMediaQuery, useTheme } from '@mui/material';
 import { useMemo } from 'react';
 
-function useSize(sizes: Array<number> = [2, 2, 4, 5, 6]) {
+function useSize(sizes: Array<number> = [2, 2, 4, 5, 5]) {
   const theme = useTheme();
   const isXs = useMediaQuery(theme.breakpoints.only('xs'));
   const isSm = useMediaQuery(theme.breakpoints.only('sm'));

@@ -1,4 +1,4 @@
-import { BACKGROUND_COLOR } from '@/utils/const';
+import { BACKGROUND_COLOR, LAYOUT_MAX_WIDTH } from '@/utils/const';
 import { Box } from '@mui/material';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <Box bgcolor={BACKGROUND_COLOR} pt={10} minHeight="100vh">
+          <Box bgcolor={BACKGROUND_COLOR} pt={10} maxWidth={LAYOUT_MAX_WIDTH} minHeight="100vh" mx="auto">
             <Header />
             {children}
           </Box>

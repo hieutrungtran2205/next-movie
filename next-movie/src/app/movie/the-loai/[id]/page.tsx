@@ -21,7 +21,7 @@ function MovieByGenres({ params }: { params: { id: string } }) {
       </Typography>
       <Grid container spacing={{ xs: 1, sm: 1, md: 5, lg: 5, xl: 5 }} py={1}>
         {results?.map((item: any) => (
-          <Grid item xs={6} sm={6} md={3} lg={2.4} xl={2} key={item.id}>
+          <Grid item xs={6} sm={6} md={3} lg={2.4} xl={2.4} key={item.id}>
             <MovieCard data={item} />
           </Grid>
         ))}

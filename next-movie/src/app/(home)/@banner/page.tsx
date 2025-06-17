@@ -17,7 +17,7 @@ function Page() {
 
   if (isLoading) {
     return (
-      <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 30 } }}>
+      <Box>
         <Skeleton
           variant="rounded"
           sx={{ height: { xs: 200, md: 300, lg: 300, xl: 400 }, backgroundColor: '#344047', borderRadius: 3 }}
@@ -28,7 +28,7 @@ function Page() {
   }
 
   return (
-    <Box sx={{ paddingX: { xs: 1, sm: 1, md: 5, lg: 20, xl: 30 } }}>
+    <Box>
       <Carousel interval={5000} activeIndicatorIconButtonProps={{ style: { color: '#fcde56' } }}>
         {results?.slice(0, 5).map((item: any) => {
           const { id, original_title, title, overview, release_date, backdrop_path, vote_count, vote_average } =

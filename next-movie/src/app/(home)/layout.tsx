@@ -1,3 +1,5 @@
+import { CONTENT_MAX_WIDTH } from '@/utils/const';
+
 interface HomeLayoutProps {
   children: React.ReactNode;
   banner: React.ReactNode;
@@ -11,10 +13,12 @@ export default function HomeLayout({ children, banner, hot, movies, tv, filter }
   return (
     <div>
       {banner}
-      {filter}
-      {hot}
-      {movies}
-      {tv}
+      <div style={{ width: CONTENT_MAX_WIDTH, margin: '0 auto' }}>
+        {filter}
+        {hot}
+        {movies}
+        {tv}
+      </div>
     </div>
   );
 }

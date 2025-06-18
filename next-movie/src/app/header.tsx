@@ -97,7 +97,7 @@ const Header: React.FC<HeaderProps> = () => {
           </Link>
         </Box>
 
-        {/* {!(openMenu || openSearch) && (
+        {!(openMenu || openSearch) && (
           <Box display="flex" paddingX={2} gap={2}>
             <Search
               sx={{
@@ -111,7 +111,7 @@ const Header: React.FC<HeaderProps> = () => {
               onClick={toggleDrawer(true)}
             />
           </Box>
-        )} */}
+        )}
         <Drawer
           anchor="right"
           open={openMenu}

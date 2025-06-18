@@ -13,7 +13,7 @@ export default function HomeLayout({ children, banner, hot, movies, tv, filter }
   return (
     <div>
       {banner}
-      <div style={{ width: CONTENT_MAX_WIDTH, margin: '0 auto' }}>
+      <div style={{ maxWidth: CONTENT_MAX_WIDTH, margin: '0 auto' }}>
         {filter}
         {hot}
         {movies}

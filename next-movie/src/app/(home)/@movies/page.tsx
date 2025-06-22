@@ -8,9 +8,12 @@ import Link from 'next/link';
 import { memo } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Loading from './loading';
+import { useSearchParams } from 'next/navigation';
 
 function HomePage() {
-  const { data, isLoading } = useQueryMovies();
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const { data, isLoading } = useQueryMovies({ page });
   const { results } = data || {};
   const chunkSize = useSize();
   const chunkedItems = [];

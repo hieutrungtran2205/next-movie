@@ -3,11 +3,13 @@
 import { useQueryNowPlaying } from '@/api/movie/now-playing';
 import { Box, Button, Skeleton, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Carousel from 'react-material-ui-carousel';
 
 function Page() {
-  const { data, isLoading } = useQueryNowPlaying();
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const { data, isLoading } = useQueryNowPlaying({ page });
   const { results } = data || {};
   const router = useRouter();
 

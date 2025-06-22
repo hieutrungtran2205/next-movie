@@ -1,15 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
 import { API_KEY } from '../../utils/const';
 
-interface paramsProps {
+interface ParamsProps {
   language?: string;
   page?: number;
   with_genres?: string;
 }
 
-const getMovies = async (params?: paramsProps) => {
+const getMovies = async (params?: ParamsProps) => {
   try {
     const res = await axios.get('https://api.themoviedb.org/3/discover/movie', {
       params: {
@@ -24,12 +23,10 @@ const getMovies = async (params?: paramsProps) => {
   }
 };
 
-export const useQueryMovies = (params?: paramsProps) => {
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get('page')) || 1;
+export const useQueryMovies = (params?: ParamsProps) => {
   const { data, error, isLoading } = useQuery({
-    queryKey: ['movies', page, params],
-    queryFn: () => getMovies({ page, ...params })
+    queryKey: ['movies', params],
+    queryFn: () => getMovies(params)
   });
   return { data, error, isLoading };
 };

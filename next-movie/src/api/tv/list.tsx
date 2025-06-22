@@ -1,14 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
 import { API_KEY } from '../../utils/const';
 
-interface paramsProps {
+interface ParamsProps {
   language?: string;
   page?: number;
 }
 
-const getTvSeries = async (params?: paramsProps) => {
+const getTvSeries = async (params?: ParamsProps) => {
   try {
     const res = await axios.get('https://api.themoviedb.org/3/discover/tv', {
       params: {
@@ -19,16 +18,13 @@ const getTvSeries = async (params?: paramsProps) => {
     });
     return res.data;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
-export const useQueryTvSeries = (params?: paramsProps) => {
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get('page')) || 1;
-  const { data, error, isLoading } = useQuery({
-    queryKey: ['tv', page, params],
-    queryFn: () => getTvSeries({ page, ...params })
+export const useQueryTvSeries = (params?: ParamsProps) => {
+  return useQuery({
+    queryKey: ['tv', params?.page, params],
+    queryFn: () => getTvSeries(params)
   });
-  return { data, error, isLoading };
 };

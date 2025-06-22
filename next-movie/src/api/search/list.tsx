@@ -1,15 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useSearchParams } from 'next/navigation';
 import { API_KEY } from '../../utils/const';
 
-interface paramsProps {
+interface ParamsProps {
   query: string;
   language?: string;
   page?: number;
 }
 
-const getSearchList = async (params?: paramsProps) => {
+const getSearchList = async (params: ParamsProps) => {
   try {
     const res = await axios.get('https://api.themoviedb.org/3/search/multi', {
       params: {
@@ -20,17 +19,13 @@ const getSearchList = async (params?: paramsProps) => {
     });
     return res.data;
   } catch (err) {
-    return err;
+    throw err;
   }
 };
 
-export const useQuerySearchList = (params?: paramsProps) => {
-  const searchParams = useSearchParams();
-  const page = Number(searchParams.get('page')) || 1;
-  const query = searchParams.get('keywords') || '';
-  const { data, error, isLoading } = useQuery({
-    queryKey: ['search', page, query, params],
-    queryFn: () => getSearchList({ page, query, ...params })
+export const useQuerySearchList = (params: ParamsProps) => {
+  return useQuery({
+    queryKey: ['search', params.page, params.query, params],
+    queryFn: () => getSearchList(params)
   });
-  return { data, error, isLoading };
 };

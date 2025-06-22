@@ -5,12 +5,15 @@ import MovieCard from '@/components/MovieCard';
 import useSize from '@/hooks/useSize';
 import { Box, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { memo } from 'react';
 import Carousel from 'react-material-ui-carousel';
 import Loading from './loading';
 
 function HomePage() {
-  const { data, isLoading } = useQueryTvSeries();
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get('page')) || 1;
+  const { data, isLoading } = useQueryTvSeries({ page });
   const { results } = data || {};
   const chunkSize = useSize();
   const chunkedItems = [];

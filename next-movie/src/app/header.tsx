@@ -3,7 +3,7 @@
 import Filter from '@/components/filter/Filter';
 import GenreList from '@/components/genres/GenreList';
 import { BACKGROUND_COLOR, CONTENT_MAX_WIDTH, LAYOUT_MAX_WIDTH } from '@/utils/const';
-import { Close, Menu, Search } from '@mui/icons-material';
+import { Close } from '@mui/icons-material';
 import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';

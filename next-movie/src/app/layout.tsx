@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import Providers from './providers';
 import Header from './header';
+import { Suspense } from 'react';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -22,8 +23,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Box bgcolor={BACKGROUND_COLOR} pt={10} maxWidth={LAYOUT_MAX_WIDTH} minHeight="100vh" mx="auto">
-            <Header />
-            {children}
+            <Suspense>
+              <Header />
+              {children}
+            </Suspense>
           </Box>
         </Providers>
       </body>

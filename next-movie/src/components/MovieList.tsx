@@ -13,7 +13,7 @@ function MovieList({ data, title, type }: MovieListProps) {
   const { results, total_pages } = data || {};
   return (
     <Box sx={{ maxWidth: CONTENT_MAX_WIDTH, margin: '0 auto' }}>
-      <Typography variant="h6" color="#fcde56" fontWeight={600}>
+      <Typography variant="h6" color="#fcde56" fontWeight={600} px={{ xs: 1, xl: 0 }}>
         {title}
       </Typography>
       <Grid container spacing={{ xs: 1, sm: 1, md: 5, lg: 5, xl: 5 }} py={1}>

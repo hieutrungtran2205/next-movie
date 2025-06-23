@@ -109,7 +109,8 @@ function Page() {
                           overflow: 'hidden',
                           WebkitBoxOrient: 'vertical',
                           WebkitLineClamp: { xs: 3, lg: 3, xl: 5 },
-                          fontSize: { xs: 14, xl: 16 }
+                          fontSize: { xs: 14, xl: 16 },
+                          textAlign: 'justify'
                         }}
                       >
                         {overview}

@@ -22,7 +22,7 @@ function Filter() {
   };
   return (
     <form onSubmit={onSubmit}>
-      <Box display="flex" flexDirection="column" gap={2} p={2}>
+      <Box display="flex" flexDirection="column" gap={2} px={10} py={2}>
         <Keywords onChange={handleChange} />
         <Button type="submit" variant="contained" color="success" sx={{ width: 'fit-content', alignSelf: 'flex-end' }}>
           Duyệt phim

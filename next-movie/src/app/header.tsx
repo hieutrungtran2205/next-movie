@@ -3,7 +3,7 @@
 import Filter from '@/components/filter/Filter';
 import GenreList from '@/components/genres/GenreList';
 import { BACKGROUND_COLOR, CONTENT_MAX_WIDTH, LAYOUT_MAX_WIDTH } from '@/utils/const';
-import { Close } from '@mui/icons-material';
+import { Close, Menu, Search } from '@mui/icons-material';
 import { AppBar, Box, Button, Drawer, List, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
@@ -80,7 +80,20 @@ const Header: React.FC<HeaderProps> = () => {
     >
       <Toolbar
         className={classes.toolbar}
-        style={{ width: CONTENT_MAX_WIDTH, maxWidth: LAYOUT_MAX_WIDTH, margin: '0 auto' }}
+        sx={{
+          width: {
+            xs: '100%',
+            sm: CONTENT_MAX_WIDTH
+          },
+          maxWidth: {
+            xs: '100%',
+            sm: LAYOUT_MAX_WIDTH
+          },
+          mx: {
+            xs: 0,
+            sm: 'auto'
+          }
+        }}
       >
         <Link href="/">
           <Image width={100} height={100} src="/images/logo.png" alt="logo" />
@@ -97,21 +110,13 @@ const Header: React.FC<HeaderProps> = () => {
           </Link>
         </Box>
 
-        {/* {!(openMenu || openSearch) && (
-          <Box display="flex" paddingX={2} gap={2}>
-            <Search
-              sx={{
-                display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' },
-                color: '#fcde56'
-              }}
-              onClick={toggleDrawerSearch(true)}
-            />
-            <Menu
-              sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none', xl: 'none' }, color: '#fcde56' }}
-              onClick={toggleDrawer(true)}
-            />
+        {!(openMenu || openSearch) && (
+          <Box display={{ xs: 'flex', sm: 'none' }} paddingX={2} gap={2}>
+            <Search sx={{ color: '#fcde56' }} onClick={toggleDrawerSearch(true)} />
+            <Menu sx={{ color: '#fcde56' }} onClick={toggleDrawer(true)} />
           </Box>
-        )} */}
+        )}
+
         <Drawer
           anchor="right"
           open={openMenu}
